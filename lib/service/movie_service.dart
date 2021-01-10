@@ -13,20 +13,16 @@ abstract class MovieService extends ChopperService{
   Future<Response<Popular>> getPopularMovies();
 
   static MovieService create() {
-    // 9
     final client = ChopperClient(
-      // 10
       baseUrl: 'https://api.themoviedb.org/3',
       interceptors: [HeaderInterceptor(), HttpLoggingInterceptor()],
       converter: ModelConverter(),
       errorConverter: JsonConverter(),
 
-      // 11
       services: [
         _$MovieService(),
       ],
     );
-    // 12
     return _$MovieService(client);
   }
 }

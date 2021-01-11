@@ -1,5 +1,5 @@
 import 'package:chopper/chopper.dart';
-import 'package:logging/logging.dart';
+import 'package:movie_rest_bloc/model/nowplaying.dart';
 import 'package:movie_rest_bloc/model/popular.dart';
 import 'header_interceptor.dart';
 import 'model_converter.dart';
@@ -12,11 +12,14 @@ abstract class MovieService extends ChopperService{
   @Get(path: 'movie/popular')
   Future<Response<Popular>> getPopularMovies();
 
-  static MovieService create() {
+  @Get(path: 'movie/now_playing')
+  Future<Response<NowPlaying>> getNowPlayingMovies();
+
+  static MovieService create(Converter converter) {
     final client = ChopperClient(
       baseUrl: 'https://api.themoviedb.org/3',
       interceptors: [HeaderInterceptor(), HttpLoggingInterceptor()],
-      converter: ModelConverter(),
+      converter: converter,
       errorConverter: JsonConverter(),
 
       services: [

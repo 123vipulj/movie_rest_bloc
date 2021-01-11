@@ -22,4 +22,11 @@ class _$MovieService extends MovieService {
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<Popular, Popular>($request);
   }
+
+  @override
+  Future<Response<NowPlaying>> getNowPlayingMovies() {
+    final $url = 'movie/now_playing';
+    final $request = Request('GET', $url, client.baseUrl);
+    return client.send<NowPlaying, NowPlaying>($request);
+  }
 }

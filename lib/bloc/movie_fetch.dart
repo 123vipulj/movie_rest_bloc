@@ -3,12 +3,13 @@ import 'dart:async';
 import 'package:chopper/chopper.dart';
 import 'package:movie_rest_bloc/bloc/block.dart';
 import 'package:movie_rest_bloc/model/popular.dart';
+import 'package:movie_rest_bloc/service/model_converter.dart';
 import 'package:movie_rest_bloc/service/movie_service.dart';
 
 class MovieFetch implements Bloc{
 
   final _controller = StreamController<Response<Popular>>();
-  final _client = MovieService.create();
+  final _client = MovieService.create(ModelConverter());
 
   Stream<Response<Popular>> get moviesList => _controller.stream;
 

@@ -1,8 +1,9 @@
 import 'package:chopper/chopper.dart';
-import 'package:movie_rest_bloc/model/nowplaying.dart';
-import 'package:movie_rest_bloc/model/popular.dart';
+import 'package:movie_rest_bloc/model/actor/actors.dart';
+import 'package:movie_rest_bloc/model/nowplaying/nowplaying.dart';
+import 'package:movie_rest_bloc/model/popularmovie/popular.dart';
 import 'header_interceptor.dart';
-import 'model_converter.dart';
+import 'model_converter/model_converter.dart';
 
 part 'movie_service.chopper.dart';
 
@@ -14,6 +15,9 @@ abstract class MovieService extends ChopperService{
 
   @Get(path: 'movie/now_playing')
   Future<Response<NowPlaying>> getNowPlayingMovies();
+
+  @Get(path: 'person/popular')
+  Future<Response<Actor>> getPopularActore();
 
   static MovieService create(Converter converter) {
     final client = ChopperClient(

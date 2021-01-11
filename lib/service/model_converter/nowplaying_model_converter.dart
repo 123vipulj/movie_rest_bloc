@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:chopper/chopper.dart';
-import 'package:movie_rest_bloc/model/nowpresult.dart';
-import 'package:movie_rest_bloc/model/nowplaying.dart';
-import 'package:movie_rest_bloc/model/popular.dart';
+import 'package:movie_rest_bloc/model/nowplaying/nowpresult.dart';
+import 'package:movie_rest_bloc/model/nowplaying/nowplaying.dart';
+import 'package:movie_rest_bloc/model/popularmovie/popular.dart';
 
 class NowPlayingModelConverter implements Converter {
 

@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:movie_rest_bloc/model/result.dart';
+import 'package:movie_rest_bloc/model/popularmovie/result.dart';
 
 part 'nowpresult.g.dart';
 

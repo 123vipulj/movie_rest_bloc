@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:chopper/chopper.dart';
-import 'package:movie_rest_bloc/model/popular.dart';
+import 'package:movie_rest_bloc/model/actor/actors.dart';
+import 'package:movie_rest_bloc/model/popularmovie/popular.dart';
 
 class ModelConverter implements Converter {
 
@@ -32,7 +33,7 @@ class ModelConverter implements Converter {
     }
     try {
       var mapData = json.decode(body);
-      var popular = Popular.fromJson(mapData);
+      var popular = Actor.fromJson(mapData);
       return response.copyWith<BodyType>(body: popular as BodyType);
     } catch (e) {
       chopperLogger.warning(e);

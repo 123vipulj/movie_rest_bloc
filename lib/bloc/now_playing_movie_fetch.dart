@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:chopper/chopper.dart';
-import 'package:movie_rest_bloc/model/nowplaying.dart';
+import 'package:movie_rest_bloc/model/nowplaying/nowplaying.dart';
 import 'package:movie_rest_bloc/service/movie_service.dart';
-import 'package:movie_rest_bloc/service/nowplaying_model_converter.dart';
+import 'package:movie_rest_bloc/service/model_converter/nowplaying_model_converter.dart';
 
 import 'block.dart';
 

@@ -6,9 +6,9 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:movie_rest_bloc/bloc/background_pos.dart';
 import 'package:movie_rest_bloc/bloc/block_provider.dart';
 import 'package:movie_rest_bloc/bloc/now_playing_movie_fetch.dart';
-import 'package:movie_rest_bloc/model/nowplaying.dart';
+import 'package:movie_rest_bloc/model/nowplaying/nowplaying.dart';
 import 'package:flutter_page_indicator/flutter_page_indicator.dart';
-import 'package:movie_rest_bloc/model/nowpresult.dart';
+import 'package:movie_rest_bloc/model/nowplaying/nowpresult.dart';
 
 const String IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
 final posBloc = BackgroundPos();
@@ -130,6 +130,22 @@ Widget _buildSlidperPos(NowPlaying nowPlaying) {
                       fontWeight: FontWeight.w900,
                       fontSize: 22,
                       color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 45,
+                left: 10,
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Running in Theater",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 26,
+                      color: Colors.white,
+                      fontFamily: "Anson"
                     ),
                   ),
                 ),

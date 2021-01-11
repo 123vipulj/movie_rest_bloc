@@ -3,7 +3,7 @@
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_rest_bloc/bloc/block_provider.dart';
-import 'package:movie_rest_bloc/model/popular.dart';
+import 'package:movie_rest_bloc/model/popularmovie/popular.dart';
 import 'package:movie_rest_bloc/ui/popular_movies/popular_movies.dart';
 import 'package:movie_rest_bloc/ui/slider_now_playing/now_playing_in_theater.dart';
 

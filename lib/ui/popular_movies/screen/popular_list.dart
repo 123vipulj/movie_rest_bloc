@@ -7,6 +7,8 @@ import 'package:movie_rest_bloc/bloc/movie_fetch.dart';
 import 'package:movie_rest_bloc/model/popularmovie/popular.dart';
 import 'package:movie_rest_bloc/ui/popular_movies/screen/rating_movie.dart';
 
+import '../../../constant.dart';
+
 class PopularList extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -23,7 +25,7 @@ class _PopularStateFull extends State<PopularList> {
     return BlocProvider<MovieFetch>(
       bloc: bloc,
       child: Container(
-        height: 400,
+        height: 300,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: _buildStreamBuilder(bloc),
@@ -52,7 +54,7 @@ Widget _buildStreamBuilder(MovieFetch movieFetch) {
 }
 
 Widget _buildMovieResult(Popular popular) {
-  const String IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
+
   return ListView.separated(
       separatorBuilder: (context, index) => Divider(),
       scrollDirection: Axis.horizontal,
@@ -61,7 +63,7 @@ Widget _buildMovieResult(Popular popular) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            width: 150,
+            width: 140,
 
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -82,7 +84,7 @@ Widget _buildMovieResult(Popular popular) {
                         child: Text(
                           popular.results[index].title,
                           style: TextStyle(
-                              fontSize: 10,
+                              fontSize: 13,
                               color: Colors.black,
                               fontWeight: FontWeight.w700),
                         ),
@@ -94,7 +96,7 @@ Widget _buildMovieResult(Popular popular) {
                   margin: const EdgeInsets.only(top: 5),
                   child: Row(
                     children: [
-                      Expanded(child: RatingStar()),
+                      RatingStar(),
                     ],
                   ),
                 )

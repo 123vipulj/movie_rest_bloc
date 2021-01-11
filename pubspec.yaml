@@ -74,6 +74,12 @@ flutter:
        - asset: assets/fonts/ANSON.ttf
        - asset: assets/fonts/AASELA.ttf
          style: normal
+
+   - family: Aasela
+     fonts:
+       - asset: assets/fonts/AASELA.ttf
+         style: normal
+
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

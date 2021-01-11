@@ -3,7 +3,7 @@ import 'package:chopper/chopper.dart';
 import 'package:movie_rest_bloc/model/actor/actors.dart';
 import 'package:movie_rest_bloc/model/popularmovie/popular.dart';
 
-class ModelConverter implements Converter {
+class ActorModelConverter implements Converter {
 
   @override
   Request convertRequest(Request request) {

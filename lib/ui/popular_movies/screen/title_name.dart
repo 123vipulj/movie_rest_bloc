@@ -11,7 +11,7 @@ class TitleName extends StatelessWidget {
       padding: const EdgeInsets.only(left:12.0),
       child: Text(
         titleTxt,
-        style: TextStyle(fontSize: 30, color: Color(0xff051938),fontWeight: FontWeight.w900),
+        style: TextStyle(fontSize: 30, color: Color(0xff051938),fontWeight: FontWeight.w900,  fontFamily: 'firasans'),
       ),
     );
   }

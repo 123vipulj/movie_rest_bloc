@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:lottie/lottie.dart';
 import 'package:movie_rest_bloc/bloc/background_pos.dart';
 import 'package:movie_rest_bloc/bloc/block_provider.dart';
 import 'package:movie_rest_bloc/bloc/now_playing_movie_fetch.dart';
@@ -127,27 +128,34 @@ Widget _buildSlidperPos(NowPlaying nowPlaying) {
                   child: Text(
                     nowPlaying.results[results].originalTitle,
                     style: TextStyle(
-                      fontWeight: FontWeight.w900,
-                      fontSize: 22,
-                      color: Colors.white,
-                    ),
+                        fontWeight: FontWeight.w900,
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontFamily: 'firasans'),
                   ),
                 ),
               ),
               Positioned(
-                top: 45,
+                top: 40,
                 left: 10,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Running in Theater",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 26,
-                      color: Colors.white,
-                      fontFamily: "Anson"
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Lottie.asset('assets/lottie/ripple.json', repeat: true, animate: true, reverse: false, width: 35, height: 35),
+                    Container(
+                      margin: const EdgeInsets.only(top: 5),
+                      child: Text(
+                        "Running in Theater",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontFamily: 'brandon',
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               )
             ],

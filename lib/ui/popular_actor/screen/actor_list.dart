@@ -22,7 +22,7 @@ class _ActorListState extends State<ActorList>{
     return BlocProvider<ActorFetch>(
       bloc: bloc,
       child: Container(
-        height: 260,
+        height: 280,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: _buildStreamBuilder(bloc),
@@ -53,8 +53,10 @@ Widget _buildActorWidget(Actor actor) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Card(
+            borderOnForeground: true,
+            elevation: 0.3,
             child: Container(
-              width: 140,
+              width: 150,
               padding: const EdgeInsets.all(5),
               margin: const EdgeInsets.all(8),
 
@@ -69,25 +71,48 @@ Widget _buildActorWidget(Actor actor) {
                     ),
                   ),
                   Container(
-                    margin: const EdgeInsets.only(top: 35),
+                    margin: const EdgeInsets.only(top: 20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           actor.results[index].actorName,
                           style: TextStyle(
                               fontSize: 13,
                               color: Colors.black,
-                              fontWeight: FontWeight.w400),
+                              fontWeight: FontWeight.w200, fontFamily: 'firasans'),
+
                         ),
                         Container(
                           margin: const EdgeInsets.only(top: 2),
                           child: Text(
                             "Poularity : "+actor.results[index].popularity.toString(),
                             style: TextStyle(
-                              fontWeight: FontWeight.w800
+                              fontWeight: FontWeight.w800,
+                                fontFamily: 'firasans'
                             ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 15),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Icon(
+                                Icons.favorite_border, size: 20, color: Colors.red.withOpacity(0.6),
+                              ),
+                              Text(
+                                "More",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                  color: Colors.blueGrey,
+                                  fontFamily: 'firasans'
+                                ),
+                              )
+                            ],
                           ),
                         )
                       ],

@@ -25,7 +25,7 @@ class _PopularStateFull extends State<PopularList> {
     return BlocProvider<MovieFetch>(
       bloc: bloc,
       child: Container(
-        height: 300,
+        height: 330,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: _buildStreamBuilder(bloc),
@@ -86,7 +86,8 @@ Widget _buildMovieResult(Popular popular) {
                           style: TextStyle(
                               fontSize: 13,
                               color: Colors.black,
-                              fontWeight: FontWeight.w700),
+                              fontWeight: FontWeight.w900,
+                          fontFamily: 'brandon'),
                         ),
                       ),
                     ],

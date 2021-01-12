@@ -2,6 +2,7 @@ import 'package:chopper/chopper.dart';
 import 'package:movie_rest_bloc/model/actor/actors.dart';
 import 'package:movie_rest_bloc/model/nowplaying/nowplaying.dart';
 import 'package:movie_rest_bloc/model/popularmovie/popular.dart';
+import 'package:movie_rest_bloc/model/search_movie/searchmovie.dart';
 import 'header_interceptor.dart';
 import 'model_converter/model_converter.dart';
 
@@ -18,6 +19,9 @@ abstract class MovieService extends ChopperService{
 
   @Get(path: 'person/popular')
   Future<Response<Actor>> getPopularActore();
+
+  @Get(path: 'search/movie')
+  Future<Response<SearchMovie>> getSearchMovie(String query);
 
   static MovieService create(Converter converter) {
     final client = ChopperClient(

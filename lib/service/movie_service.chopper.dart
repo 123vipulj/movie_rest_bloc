@@ -36,4 +36,11 @@ class _$MovieService extends MovieService {
     final $request = Request('GET', $url, client.baseUrl);
     return client.send<Actor, Actor>($request);
   }
+
+  @override
+  Future<Response<SearchMovie>> getSearchMovie(String query) {
+    final $url = 'search/movie';
+    final $request = Request('GET', $url, client.baseUrl, parameters: {'query' : query, 'include_adult' : 'true'});
+    return client.send<SearchMovie, SearchMovie>($request);
+  }
 }

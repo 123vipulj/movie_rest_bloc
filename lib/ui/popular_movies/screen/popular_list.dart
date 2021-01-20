@@ -2,9 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:movie_rest_bloc/bloc/block_provider.dart';
 import 'package:movie_rest_bloc/bloc/movie_fetch.dart';
 import 'package:movie_rest_bloc/model/popularmovie/popular.dart';
+import 'package:movie_rest_bloc/ui/movie_full_detail/movie_full_detail.dart';
+import 'package:movie_rest_bloc/ui/popular_movies/popular_movies.dart';
 import 'package:movie_rest_bloc/ui/popular_movies/screen/rating_movie.dart';
 
 import '../../../constant.dart';
@@ -41,12 +44,17 @@ Widget _buildStreamBuilder(MovieFetch movieFetch) {
     builder: (context, snapshot) {
       final results = snapshot.data;
 
-      if (results == null) {}
+      if (results == null) {
+        return Center(
+          child: Lottie.asset('assets/lottie/loading.json',
+              repeat: true,
+              animate: true,
+              reverse: false,
+              width: 150,
+              height: 150),
+        );
+      }
 
-      //
-      // if(results.isEmpty){
-      //
-      // }
 
       return _buildMovieResult(results.body);
     },
@@ -68,12 +76,17 @@ Widget _buildMovieResult(Popular popular) {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    IMAGE_URL + popular.results[index].posterPath,
-                    fit: BoxFit.contain,
+                InkWell(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      IMAGE_URL + popular.results[index].posterPath,
+                      fit: BoxFit.contain,
+                    ),
                   ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MovieFullDetail(popular.results[index].id.toString())));
+                  },
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 15),

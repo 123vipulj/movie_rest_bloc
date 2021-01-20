@@ -46,14 +46,18 @@ Widget _buildStreamBuilder(NowPlayingMovieFetch movieFetch) {
     builder: (context, snapshot) {
       final results = snapshot.data;
 
-      if (results == null) {}
-
-      //
-      // if(results.isEmpty){
-      //
-      // }
-
-      return _buildNowPlayingMovies(results.body);
+      if (results == null) {
+        return Center(
+          child: Lottie.asset('assets/lottie/loading.json',
+              repeat: true,
+              animate: true,
+              reverse: false,
+              width: 150,
+              height: 150),
+        );
+      } else {
+        return _buildNowPlayingMovies(results.body);
+      }
     },
   );
 }
@@ -102,65 +106,76 @@ Widget _buildSlidperPos(NowPlaying nowPlaying) {
       builder: (context, snapshot) {
         final results = snapshot.data;
 
-        return Container(
-          child: Stack(
-            children: [
-              FadeInImage(
-                fit: BoxFit.cover,
-                placeholder: AssetImage("assets/images/placeholder.png"),
-                image: NetworkImage(
-                  IMAGE_URL + nowPlaying.results[results].posterPath,
-                ),
-              ),
-              BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-                child: Container(
-                  decoration:
-                      new BoxDecoration(color: Colors.black.withOpacity(0.5)),
-                ),
-              ),
-              Positioned(
-                top: size.height * 0.63,
-                right: 0.0,
-                left: 0.0,
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    nowPlaying.results[results].originalTitle,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w900,
-                        fontSize: 22,
-                        color: Colors.white,
-                        fontFamily: 'firasans'),
+        if (results != null) {
+          return Container(
+            child: Stack(
+              children: [
+                FadeInImage(
+                  fit: BoxFit.cover,
+                  placeholder: AssetImage("assets/images/placeholder.png"),
+                  image: NetworkImage(
+                    IMAGE_URL + nowPlaying.results[results].posterPath,
                   ),
                 ),
-              ),
-              Positioned(
-                top: 40,
-                left: 10,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Lottie.asset('assets/lottie/ripple.json', repeat: true, animate: true, reverse: false, width: 35, height: 35),
-                    Container(
-                      margin: const EdgeInsets.only(top: 5),
-                      child: Text(
-                        "Running in Theater",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20,
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
+                  child: Container(
+                    decoration:
+                        new BoxDecoration(color: Colors.black.withOpacity(0.5)),
+                  ),
+                ),
+                Positioned(
+                  top: size.height * 0.63,
+                  right: 0.0,
+                  left: 0.0,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      nowPlaying.results[results].originalTitle,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 22,
                           color: Colors.white,
-                          fontFamily: 'brandon',
+                          fontFamily: 'firasans'),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 40,
+                  left: 10,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Lottie.asset('assets/lottie/ripple.json',
+                          repeat: true,
+                          animate: true,
+                          reverse: false,
+                          width: 35,
+                          height: 35),
+                      Container(
+                        margin: const EdgeInsets.only(top: 5),
+                        child: Text(
+                          "Running in Theater",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontFamily: 'brandon',
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
-        );
+                    ],
+                  ),
+                )
+              ],
+            ),
+          );
+        }else {
+          return Container(
+
+          );
+        }
       },
     ),
   );

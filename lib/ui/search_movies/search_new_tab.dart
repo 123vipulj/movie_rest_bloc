@@ -68,41 +68,48 @@ Widget _buildStramBuilder(SearchFetch searchFetch) {
 }
 
 Widget _buildSearchList(SearchMovie searchMovie) {
-  return ListView.separated(
-    separatorBuilder: (context, index) => Divider(),
-    itemCount: searchMovie.results.length,
-    itemBuilder: (context, index) {
-      String url;
-      if(searchMovie.results[index].posterPath != null){
-        url = searchMovie.results[index].posterPath;
-      }else {
-        url = "https://lanecdr.org/wp-content/uploads/2019/08/placeholder.png";
-      }
+  if(searchMovie != null){
+    return ListView.separated(
+      separatorBuilder: (context, index) => Divider(),
+      itemCount: searchMovie.results.length,
+      itemBuilder: (context, index) {
+        String url;
+        if(searchMovie.results[index].posterPath != null){
+          url = searchMovie.results[index].posterPath;
+        }else {
+          url = "https://lanecdr.org/wp-content/uploads/2019/08/placeholder.png";
+        }
 
-      return Container(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.network(IMAGE_URL + url, height: 50, width: 60),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(searchMovie.results[index].movieTitle),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(searchMovie.results[index].releaseDate, style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'firasans'
-                ),)
-              ],
-            ),
+        return Container(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.network(IMAGE_URL + url, height: 50, width: 60),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(searchMovie.results[index].movieTitle),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(searchMovie.results[index].releaseDate, style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'firasans'
+                  ),)
+                ],
+              ),
 
-          ],
-        ),
-      );
-    },
-  );
+            ],
+          ),
+        );
+      },
+    );
+  }else {
+    return Center(
+      child: Text("Search Movies Name"),
+    );
+  }
+
 }

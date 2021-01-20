@@ -1,5 +1,7 @@
 import 'package:chopper/chopper.dart';
 import 'package:movie_rest_bloc/model/actor/actors.dart';
+import 'package:movie_rest_bloc/model/cast/movie_cast.dart';
+import 'package:movie_rest_bloc/model/moviedetails/movie_detail.dart';
 import 'package:movie_rest_bloc/model/nowplaying/nowplaying.dart';
 import 'package:movie_rest_bloc/model/popularmovie/popular.dart';
 import 'package:movie_rest_bloc/model/search_movie/searchmovie.dart';
@@ -22,6 +24,12 @@ abstract class MovieService extends ChopperService{
 
   @Get(path: 'search/movie')
   Future<Response<SearchMovie>> getSearchMovie(String query);
+
+  @Get(path: 'movie')
+  Future<Response<MovieDetail>> getMoviesDetails(String id);
+
+  @Get(path: 'movie')
+  Future<Response<MovieCast>> getMovieCast(String id);
 
   static MovieService create(Converter converter) {
     final client = ChopperClient(

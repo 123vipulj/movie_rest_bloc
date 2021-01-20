@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:movie_rest_bloc/bloc/actor_fetch.dart';
 import 'package:movie_rest_bloc/bloc/block_provider.dart';
 import 'package:movie_rest_bloc/model/actor/actors.dart';
@@ -37,9 +38,20 @@ Widget _buildStreamBuilder(ActorFetch result) {
   return StreamBuilder(
     stream: result.actorStream,
     builder: (context, snapshot){
-      final result = snapshot.data;
+      final results = snapshot.data;
+      if (results == null) {
+        return Center(
+          child: Lottie.asset('assets/lottie/loading.json',
+              repeat: true,
+              animate: true,
+              reverse: false,
+              width: 150,
+              height: 150),
+        );
+      }
 
-      return _buildActorWidget(result.body);
+
+      return _buildActorWidget(results.body);
     },
   );
 }

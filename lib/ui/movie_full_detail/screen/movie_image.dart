@@ -76,6 +76,13 @@ Widget _buildActorWidget(MovieDetail movieDetail, BuildContext context) {
     Colors.purple
   ];
 
+  var mBudget = "";
+  if(movieDetail.budget == 0){
+    mBudget = "Info not available";
+  }else {
+    mBudget = numDifferentiation(movieDetail.budget).toString();
+  }
+
   return Column(
     children: [
       Image.network(
@@ -136,7 +143,7 @@ Widget _buildActorWidget(MovieDetail movieDetail, BuildContext context) {
                       Container(
                         margin: const EdgeInsets.only(left: 8),
                         child: Text(
-                          numDifferentiation(movieDetail.budget),
+                          ,
                           style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w900,
